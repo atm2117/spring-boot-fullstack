@@ -1,0 +1,32 @@
+https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#features.testing
+
+SpringBoot Maven Plugin Jar
+https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/
+
+Running a jar
+java -jar target/demo-0.0.1-SNAPSHOT.jar
+
+Separate unit test from integration test
+    Surefire Plugin: Unit Test
+    Add surefire plugin in the app pom.xml
+    add the maven surefire plugin and exclude the execution of all files ending with IntegrationTest.java
+    <configuration>
+        <excludes>**/*IntegrationTest.java</excludes>
+    </configuration>
+    Run the maven "test" lifecycle phase
+
+Failsafe Plugin: Integration Test
+    https://docs.spring.io/spring-boot/docs/current/maven-plugin/reference/htmlsingle/
+    Add the execution start and stop for integration test to the spring-boot-maven-plugin in pom.xml
+    Add Failsafe plugin in the app pom.xml
+    <configuration>
+        <classesDirectory>${project.build.outputDirectory}</classesDirectory>
+        <includes>
+            <include>**/*IntegrationTest.java</include>
+            <include>**/*IT.java</include>
+        </includes>
+    </configuration>
+    Run the maven "verify" lifecycle phase
+    Add Random Port capability with extra configuration in maven (Link below -> Examples)
+
+

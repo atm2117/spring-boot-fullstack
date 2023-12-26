@@ -1,0 +1,60 @@
+What is docker?
+    A platform for building, running and shipping applications
+    Developers can easily build and deploy applications running in containers
+
+Virtual Machine vs Docker
+    Virtual machines are an abstraction of physical hardware turning one server into many servers using hypervisor.
+    More secure.
+        ex: virtual box, vmware.
+    Docker containers are an abstraction at the app layer that packages code and dependencies together. Multiple containers
+    can run on the same machine and share the OS Kernel with other containers, each isolated from the other.
+    Containers take up less space than VMs, can handle more apps and require fewer OS.
+
+Understanding Containers
+    A container is an isolated environment for running an application.
+    Contains everything your application needs to run.
+
+Docker Images and Containers
+    Your Code -> (Build) -> Docker Image -> (Run) -> Container (1 or more)
+    Docker Image is a template to run containers. One image can run multiple containers.
+
+Docker Architecture
+    Client - cli
+        docker build
+        docker run
+        docker pull
+    Server - Docker Host
+        Docker Daemon
+        Stores images
+    Registries
+        applications containers
+
+Docker Registries
+    They are storage and distribution system for docker images.
+    Public and Private registries
+    docker pull -> pull an image from a registry to our local machine
+        docker pull amigoscode/kubernetes:frontend-v1
+        You can pull any public image without authenticating. For private image, you need to login.
+    docker push -> push an image from our local machine to a registry
+    docker ps
+    docker logs container_id
+
+Docker Commands
+
+docker ps	List running containers
+docker ps -a	List all containers (including stopped ones)
+docker images	List images
+docker run <image>	Run a container from an image
+docker stop <container>	Stop a running container
+docker rm <container>	Remove a stopped container
+docker rmi <image>	Remove an image
+docker build <path/to/dockerfile>	Build an image from a Dockerfile
+docker tag <image> <new_name:tag>	Tag an image with a new name and optional tag
+docker login	Log in to a Docker registry
+docker push <image>	Push an image to a Docker registry
+docker pull <image>	Pull an image from a Docker registry
+docker exec -it <container> <command>	Execute a command in a running container
+docker-compose up	Start all services defined in a docker-compose.yml file
+docker-compose down	Stop all services defined in a docker-compose.yml file
+
+

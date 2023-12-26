@@ -1,0 +1,26 @@
+Git Cheatsheet
+
+git init	Initializes a new Git repository.
+git clone [url]	Creates a copy of a remote repository on your local machine.
+git add [file]	Adds changes in a file to the staging area for the next commit.
+git commit -m "[message]"	Records changes to the repository with a message describing the changes.
+git status	Displays the current status of the repository, including any uncommitted changes.
+git branch	Lists all branches in the repository, indicating the current branch with an asterisk.
+git checkout [branch]	Switches to a specified branch.
+git merge [branch]	Merges a specified branch into the current branch.
+git push [remote] [branch]	Uploads local changes to a remote repository.
+git pull [remote] [branch]	Downloads and integrates changes from a remote repository into the current branch.
+git remote add [name] [url]	Adds a named remote repository to the list of tracked repositories.
+git remote -v	Displays a list of all remote repositories associated with the local repository.
+git log	Displays a log of all commits made to the repository.
+git diff	Displays the differences between the working directory and the staging area or the most recent commit.
+git reset [file]	Removes changes from the staging area for a specified file.
+git stash	Saves changes in the working directory toa stash, allowing you to switch branches or perform other operations without committing the changes.
+git stash apply	Restores the most recent stash to the working directory.
+git tag [name]	Adds a tag to the most recent commit.
+git tag -a [name] -m "[message]"	Adds an annotated tag to the most recent commit with a message describing the tag.
+git show [commit]	Displays the details of a specified commit.
+git rm [file]	Removes a specified file from the repository and stages the change for the next commit.
+git mv [old] [new]	Renames a specified file and stages the change for the next commit.
+git remote rm [name]	Removes a specified remote repository from the list of tracked repositories.
+git help [command]	Displays help information for a specified Git command.

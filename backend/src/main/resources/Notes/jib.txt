@@ -1,0 +1,60 @@
+What is Jib?
+    https://github.com/GoogleContainerTools/jib/tree/master/jib-maven-plugin
+
+    JIB is an open-source Java containerization tool developed by Google that builds optimized Docker and OCI images for Java applications without requiring Docker daemon or even Docker installation on the developer's machine. JIB builds container images directly from your Java build without the need to package your application in a container.
+
+Advantages
+    Fast: Separate the application into multiple layers. No need to wait for Docker to rebuild the entire app.
+    Reproducible: rebuilding the app with the same container always build the same image.
+    Daemonless: reduce cli dependencies
+
+Configuring Jib Plugin
+    Add maven plugin configs
+    docker login
+    mvn clean package
+    configure docker registry information in settings.xml of .m2
+    run command "mvn clean compile jib:build"
+
+Pulling and running container
+    docker pull atambwe/demo:latest
+    docker run --name demo --rm -p5462:5462 atambwe/demo:latest
+
+Container Communication
+    localhost looks inside of the same container.
+    We have to specify the docker network for 2 different container to communicate.
+    We also need to override the url containing the port number.
+    Docker compose for postgres is exposing its content using port 5432.
+
+Docker Network in Action
+    docker run --name demo1 --rm -p 3000:3000 --network spring-arnold-project_postgres atambwe/demo --spring.datasource.url=jdbc:postgresql://postgres:5432/customer
+        Port number should be the same one as specified in the application(3000)
+    checker the docker-compose.xml to get the network alias.
+        docker network ls
+
+Docker Compose
+    add the network changes under a new container through docker-compose.xml
+      demo:
+        container_name: arnold-api
+        image: atambwe/demo
+        environment:
+          SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/customer
+        ports:
+          - "8088:3000"
+        networks:
+          - postgres
+        depends_on:
+          - postgres
+        restart: unless-stopped
+    Run the command below
+        docker compose up -d
+        docker ps               //Checks the running components
+        docker compose down     //Closes all the running containers
+        docker compose up -d    //Re-open containers
+        docker compose start
+    In Postman
+        GET request from url: localhost:8088/api/v1/customers
+
+    Code
+        https://github.com/amigoscode/full-stack-professional/commit/a2d4a182824d90daa2974242144310dc7ebf986a
+
+

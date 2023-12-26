@@ -1,0 +1,18 @@
+JDBC: Java Database Connectivity
+Datasource: It is an object that provides connection for jdbc client to the dbms.
+The Datasource connects to a connection pool. DB connection is expensive.
+The client connects, perform a query then release the connection.
+Flyway is a database migration. Database versioning tool.
+Naming convention for files create under db.migration needs to be respected for flyway to proceed with the changes.
+
+Flyway in IntelliJ's Postgres terminal
+    \d flyway_schema_history
+    \x  //expanded display
+    select * from flyway_schema_history;
+    delete from flyway_schema_history;
+    drop table customer;
+
+Github Code: https://github.com/amigoscode/full-stack-professional/commit/10788181a5a58080567fa16406410b4f93004d36
+
+Self contain application or microservice, no complexity: jpa
+jdbc template: for extensive sql queries. Performing reports, complex queries.

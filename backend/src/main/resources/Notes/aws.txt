@@ -1,0 +1,133 @@
+AWS Free Tier
+   Cloud application that provides services over the internet.
+   Services: Compute, databases, storage and other network services.
+
+EC2: Virtual Server
+IAM: Identity and Access Management (Users, Groups, Roles and permissions)
+Lambda: serverless compute tool that uses functions.
+ECS: Elastic Container Services, used to run containers.
+RDS: Relational Database
+AWS Amplify: used to deploy front-end applications.
+Cloud Shell: allows us to use the aws cli against our accounts.
+Security Group: firewall
+AWS Role: allows a an aws service to perform an activity on our behalf.
+
+Elastic Beanstalk
+    End-to-end web application management.
+    Deploy web apps in minutes. Just load your code and it will deploy and monitor it.
+    It us an easy-to-use service for deploying and scaling web applications.
+    No cost for Elastic Beanstalk. You pay for the other services created using Elastic Beanstalk.
+
+Elastic Beanstalk Key Terms
+    In Elastic Beanstalk, an application is similar to a folder.
+    An environment is a collection of AWS resources running an application version.
+        One environment for testing and another for production.
+
+Generate Key-Value pair
+    Navigate to EC2 services
+    Key-Pairs are located in EC2 -> Network and Security -> Key Pairs
+        Create Key-Pair (arnold-aws)
+            rsa
+            .pem
+        Save the key-pair,
+    Key Pairs are set of credentials to access our EC2.
+    We have public and private key-pairs.
+
+Working with Elastic Beanstalk
+    Getting Started
+    Role created: AWSServiceRoleForElasticBeanstalk
+    Create an elastic beanstalk app "arnold-api1"
+        Create 2 tags:
+            (name, arnold-api1)
+            (environment, test)
+        Platform
+            Name: Docker
+            branch: ECS running on 64bits amazon Linux
+            version: recommended
+        Application code
+            Select "Upload your code"
+            version label: "arnold-api1-source"
+            source code origin: local file
+            upload the dockerrun.aws.json from our demo project
+        EC2 Security Group
+            Default
+        Processor
+            arm64
+        Instance
+            t4g.micro
+        DB
+            Engine: postgres
+            version: latest one
+            instance class: db.t3.small
+            20GB
+            username: arnold
+            password: password
+            Availability: Low (one AZ)
+        Network
+            Vpc: default
+            subnet: 2a and 2b
+            db subnet: 2a and 2b
+        Tag:
+            environment: test
+
+ECS
+    Elastic Container Service
+    A highly scalable and fast container management service that makes it easy to run, stop and manage containers on a cluster.
+
+Docker run aws json
+    Copy the dockerrun.aws.json from aws website
+    create a new file in intelliJ under the root folder with the file informations and name the file "Dockerrun.aws.json"
+    remove some unnecessary information from this file
+        the volume, remove one extra container parameter, links, mountPoints
+        update the container parameter with the previously created container (please check docker-compose.yml)
+        add environment
+
+Updating DB Host and Inspecting Logs
+    Request Logs
+        Elastic Beanstalk -> Environments -> arnold-api1-> Logs -> Request Logs
+    Grab the DB host
+        RDS -> DB Instances -> select our newly created instance
+            copy the endpoint
+            replace TODO in our Dockerrun.aws.json file the newly copied endpoint.
+    Elastic Beanstalk -> Environments -> arnold-api1
+        Upload and deploy, upload our new Dockerrun.aws.json
+    Navigate to Elastic Beanstalk -> Environments -> arnold-api1-> Logs -> Request Logs
+
+SSH Windows Users
+    To SSH to an EC2 instance on Windows, you can follow these steps:
+
+    Download and install PuTTY, a free and open-source SSH client for Windows.
+    Open PuTTY and enter the public DNS or IP address of your EC2 instance in the "Host Name (or IP address)" field.
+    Under the "Connection" tab, select "SSH" and "Auth".
+    Under "Auth", click "Browse" and select the private key file (.pem) for your EC2 instance.
+    Go back to the "Session" tab, and give your session a name under "Saved Sessions", and click "Save".
+    Click "Open" to start the SSH connection.
+    If this is your first time connecting to the instance, you may see a security alert. Click "Yes" to continue.
+    You should now be connected to your EC2 instance via SSH and can run commands in the terminal.
+    Alternatively, you can use the Windows Subsystem for Linux (WSL) to SSH to your EC2 instance. WSL provides a Linux-compatible kernel interface to Windows, allowing you to run Linux commands natively on Windows. You can follow these steps:
+
+    Install WSL on your Windows machine.
+    Install an SSH client on your WSL distribution. For example, you can install OpenSSH by running the command sudo apt-get install openssh-client.
+    Follow the steps above to SSH to your EC2 instance, but use the SSH client installed in your WSL distribution instead of PuTTY.
+    https://ling123labs.com/posts/WSL-files-in-Windows-and-vice-versa/
+    /mnt/c/Users/Arnold Malilo Tambwe/OneDrive/Documents$
+        ip address: 3.19.169.1
+    Copy the .pem file to the root file
+        cp arnold-aws.pem ~
+    Execute this commands in the root folder (cd ~)
+        chmod 600 arnold-aws.pem
+        ssh -i arnold-aws.pem ec2-user@3.19.169.1
+
+In production, we don't want to expose our private information by accessing the ec2 public ip directly
+    A secondary EC2 will be created on top of the primary ec2, and we will connect to it. (Bastions)
+    Use security group to allow traffic.
+
+Create a customer DB
+    Install docker on ubuntu machine
+        https://docs.docker.com/engine/install/ubuntu/
+    psql -U arnold -d postgres -h host
+        The host is our rds endpoint
+
+
+
+

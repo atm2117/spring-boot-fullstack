@@ -1,0 +1,31 @@
+ports:
+      - "5462:5432"
+Note: -"newPort:normalPort"
+
+docker compose up -d   //will create new container based on docker-compose file.
+docker compose ps      //will show you the container present at the given location.
+docker exec -it nameofTheContainer bash       //bashing into our container.
+    docker exec -it arnoldSpringBoot bash
+docker compose stop
+psql -U username        //access your user profile
+    psql -U arnold
+\l                      //to view all db for the current user
+\q                      //exits completely from psql
+\c databaseName         //connects to a db
+\d databaseName         //gives the db description
+ctrl+d                  //exits completely from the container
+https://www.freecodecamp.org/news/manage-postgresql-with-psql/
+
+
+Install SpringBoot postgresql and data JPA's maven dependencies.
+Run the application.
+Create the customer database to get rid of the exception.
+
+Create the customer db using the terminal
+bash into postgres container
+switch to the user "arnold"
+Create DATABASE customer;
+
+
+docker compose start
+    Starts our docker if configuration is already in place.

@@ -1,0 +1,19 @@
+docker ps                                   //provides containers information
+docker exec -it CONTAINER_NAME bash         //Bashing into the container, make sure the db is running.
+    docker exec -it kind_napier bash
+
+psql -U username -d dbName                  //log into the db
+    psql -U arnold -d arnold-db
+
+\l                                          //list of db
+
+\c dbName                                   //Connecting to a db
+
+\d                                          //Check existing relations.
+
+\d tableName                                //view details
+    \d customer
+
+Select * from flyway_schema_history;        //View migration table details.
+
+https://github.com/amigoscode/full-stack-professional/commit/b275984ea7f95550f71dcaa51eaf4c3b13e8fdbd
