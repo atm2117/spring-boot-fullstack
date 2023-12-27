@@ -134,6 +134,9 @@ Create a customer DB
     https://linux.how2shout.com/how-to-create-alpine-container-in-docker/
     docker run --rm -it postgres:alpine bash
         psql -U arnold -d customer -h awseb-e-nvp3ammb2x-stack-awsebrdsdatabase-3avepb4ayog0.cx0km4uyk5x8.us-east-2.rds.amazonaws.com
+        https://github.com/amigoscode/full-stack-professional/commit/80cced478edb4b47c78dc4f3516199238545621b
+    open http://arnold-api1-env.eba-scmesrrf.us-east-2.elasticbeanstalk.com/api/v1/customers'
+        or elastic beanstalk domain link.
 
 
 
