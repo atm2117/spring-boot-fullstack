@@ -3,6 +3,25 @@ Git Cheatsheet
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
 https://stackoverflow.com/questions/68775869/message-support-for-password-authentication-was-removed
+GitHub Action
+    It automates your workflow from idea to production. Deploy the jar to any given environment.
+    Workflow
+        The workflow is an automated procedure that you add to your repository.
+        Workflows are made up of one or more jobs and can be rescheduled or triggered by an event.
+        The workflow can be used to build, test, package, release or deploy a project on github.
+        Events
+            Repo events: push, pull request, release.
+            webhooks
+            manual events
+            scheduled events
+        Job
+            Set of steps which run in parallel by default.
+        Steps
+            Individual task that can run commands in a job. Action or shell command.
+        Action
+            Standalone commands that are combined into steps to create job.
+        Runner
+            Virtual Machines
 
 git init	Initializes a new Git repository.
 git clone [url]	Creates a copy of a remote repository on your local machine.

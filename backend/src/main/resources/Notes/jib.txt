@@ -34,7 +34,7 @@ Docker Network in Action
 Docker Compose
     add the network changes under a new container through docker-compose.xml
       demo:
-        container_name: arnold-api
+        container_name: demo
         image: atambwe/demo
         environment:
           SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/customer

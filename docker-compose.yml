@@ -10,12 +10,11 @@ services:
       - postgres:/data/postgres
     ports:
       - "5462:5432"
-#      - host:external
     networks:
       - postgres
     restart: unless-stopped
   demo:
-    container_name: arnold-api
+    container_name: demo
     image: atambwe/demo
     environment:
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/customer

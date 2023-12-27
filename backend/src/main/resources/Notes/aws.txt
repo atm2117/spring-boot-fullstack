@@ -125,9 +125,15 @@ In production, we don't want to expose our private information by accessing the 
 Create a customer DB
     Install docker on ubuntu machine
         https://docs.docker.com/engine/install/ubuntu/
-    psql -U arnold -d postgres -h host
+        sudo -i
+            execute commands as root in ubuntu environment.
+    psql --host awseb-e-nvp3ammb2x-stack-awsebrdsdatabase-3avepb4ayog0.cx0km4uyk5x8.us-east-2.rds.amazonaws.com --port=5432 -d postgres --username=arnold --password
         The host is our rds endpoint
+    create database customer;
 
+    https://linux.how2shout.com/how-to-create-alpine-container-in-docker/
+    docker run --rm -it postgres:alpine bash
+        psql -U arnold -d customer -h awseb-e-nvp3ammb2x-stack-awsebrdsdatabase-3avepb4ayog0.cx0km4uyk5x8.us-east-2.rds.amazonaws.com
 
 
 
