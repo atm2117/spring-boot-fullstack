@@ -138,5 +138,24 @@ Create a customer DB
     open http://arnold-api1-env.eba-scmesrrf.us-east-2.elasticbeanstalk.com/api/v1/customers'
         or elastic beanstalk domain link.
 
+Cloud Formation
+    It creates the stack for us.
+    It creates security groups, ec2, and other services.
+    It creates our Elastic beanstalk infrastructure.
+    We can go to template and click on view in designer to have a visual of our infrastructure.
+
+Infrastructure
+    Elastic Beanstalk is good for small applications.
+    As the application goes bigger, it's recommended to use tools such as:
+        Terraform
+        Pulumi
+
+Multiple Environments
+    qa, dev and prod.
+
+There are many other ways to Deploy
+    kubernetes (EKS) is a way of deploying containers.
+    ECS is another way.
+
 
 
