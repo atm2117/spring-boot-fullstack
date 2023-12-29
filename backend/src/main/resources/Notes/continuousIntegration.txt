@@ -1,0 +1,44 @@
+Introduction
+    An event will trigger our job build.
+        Event: Pull request.
+    The job will run on our linux server.
+    Steps
+        Setup Postgres -> Clone Repo -> Setup Java & Maven -> mvn clean verify.
+
+Creating the workflow
+    Create a new folder under the root and name it ".github/workflows"
+    create a new file under the newly created folder and name it "backend-ci.yml"
+    Trigger the job each time there is a pull request on the folder "backend/**"
+
+GitHub Actions
+    We will create a job called build in our "backend-ci.yml".
+
+Checkout Action
+    https://github.com/marketplace?category=&query=&type=actions&verification=
+        steps:
+          - uses: actions/checkout@v3
+
+Setup Java Action
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+Run Shell Command
+      - name: Build and run Unit/Integration Tests with Maven
+        run: mvn -ntp -B verify
+
+Setting the working directory where the command will be executed
+    defaults:
+      run:
+        working-directory: ./backend
+
+Commit and Pushing
+
+
+
+
+
+
+
