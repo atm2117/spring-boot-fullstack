@@ -34,7 +34,12 @@ Setting the working directory where the command will be executed
       run:
         working-directory: ./backend
 
-Commit and Pushing
+New Feature Branch
+    create a new branch from github "testing-ci-build-workflow".
+    Pull the branch.
+    Checkout the new branch
+
+Triggering the workflow with pull request
 
 
 
